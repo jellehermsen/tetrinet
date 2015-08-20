@@ -194,7 +194,7 @@ static long getcolor(int fg, int bg)
 	start_color();
 	memset(colors, -1, sizeof(colors));
 	colors[0][0] = COLOR_WHITE;
-	colors[0][1] = COLOR_BLACK;
+	colors[0][1] = -1;
     }
     if (fg == COLOR_WHITE && bg == COLOR_BLACK)
 	return COLOR_PAIR(0);
@@ -509,7 +509,7 @@ static const int field_text_coord[2] = {0,47};
 /* Information for drawing blocks.  Color attributes are added to blocks in
  * the setup_fields() routine. */
 static int tile_chars[15] =
-    { ' ','#','#','#','#','#','a','c','n','r','s','b','g','q','o' };
+    { ' ',' ',' ',' ',' ',' ','a','c','n','r','s','b','g','q','o' };
 
 /* Are we redrawing the entire display? */
 static int field_redraw = 0;
@@ -533,11 +533,11 @@ static void setup_fields(void)
     if (!(tile_chars[0] & A_ATTRIBUTES)) {
 	for (i = 1; i < 15; i++)
 	    tile_chars[i] |= A_BOLD;
-	tile_chars[1] |= getcolor(COLOR_BLUE, COLOR_BLACK);
-	tile_chars[2] |= getcolor(COLOR_YELLOW, COLOR_BLACK);
-	tile_chars[3] |= getcolor(COLOR_GREEN, COLOR_BLACK);
-	tile_chars[4] |= getcolor(COLOR_MAGENTA, COLOR_BLACK);
-	tile_chars[5] |= getcolor(COLOR_RED, COLOR_BLACK);
+	tile_chars[1] |= getcolor(COLOR_BLUE, COLOR_BLUE);
+	tile_chars[2] |= getcolor(COLOR_YELLOW, COLOR_YELLOW);
+	tile_chars[3] |= getcolor(COLOR_GREEN, COLOR_GREEN);
+	tile_chars[4] |= getcolor(COLOR_MAGENTA, COLOR_MAGENTA);
+	tile_chars[5] |= getcolor(COLOR_RED, COLOR_RED);
     }
 
     field_redraw = 1;
@@ -592,23 +592,23 @@ static void setup_fields(void)
     y = own_coord[1];
     sprintf(buf, "%d", my_playernum);
     mvaddstr(y, x-1, buf);
-    for (i = 2; i < FIELD_HEIGHT*2 && players[my_playernum-1][i-2]; i++)
+    for (i = 2; i < FIELD_HEIGHT && players[my_playernum-1][i-2]; i++)
 	mvaddch(y+i, x-1, players[my_playernum-1][i-2]);
     if (teams[my_playernum-1] != '\0') {
-	mvaddstr(y, x+FIELD_WIDTH*2+2, "T");
-	for (i = 2; i < FIELD_HEIGHT*2 && teams[my_playernum-1][i-2]; i++)
+	mvaddstr(y, x+FIELD_WIDTH+2, "T");
+	for (i = 2; i < FIELD_HEIGHT && teams[my_playernum-1][i-2]; i++)
 	    mvaddch(y+i, x+FIELD_WIDTH*2+2, teams[my_playernum-1][i-2]);
     }
     move(y, x);
-    vline(MY_VLINE, FIELD_HEIGHT*2);
+    vline(MY_VLINE, FIELD_HEIGHT);
     move(y, x+FIELD_WIDTH*2+1);
-    vline(MY_VLINE, FIELD_HEIGHT*2);
-    move(y+FIELD_HEIGHT*2, x);
+    vline(MY_VLINE, FIELD_HEIGHT);
+    move(y+FIELD_HEIGHT, x);
     addch(MY_LLCORNER);
     hline(MY_HLINE, FIELD_WIDTH*2);
-    move(y+FIELD_HEIGHT*2, x+FIELD_WIDTH*2+1);
+    move(y+FIELD_HEIGHT, x+FIELD_WIDTH*2+1);
     addch(MY_LRCORNER);
-    mvaddstr(y+FIELD_HEIGHT*2+2, x, "Specials:");
+    mvaddstr(y+FIELD_HEIGHT+2, x, "Specials:");
     draw_own_field();
     draw_specials();
 
@@ -713,48 +713,15 @@ static void draw_own_field(void)
     if (dispmode != MODE_FIELDS)
 	return;
 
-    /* XXX: Code duplication with tetris.c:draw_piece(). --pasky */
-    if (playing_game && cast_shadow) {
-	int y = current_y - piecedata[current_piece][current_rotation].hot_y;
-	char *shape = (char *) piecedata[current_piece][current_rotation].shape;
-	int i, j;
-
-	for (j = 0; j < 4; j++) {
-	    if (y+j < 0) {
-		shape += 4;
-		continue;
-	    }
-	    for (i = 0; i < 4; i++) {
-		if (*shape++)
-		    shadow[i] = y + j;
-	    }
-	}
-    }
-
     x0 = own_coord[0]+1;
     y0 = own_coord[1];
     for (y = 0; y < 22; y++) {
-	for (x = 0; x < 12; x++) {
-	    int c = tile_chars[(int) (*f)[y][x]];
+        for (x = 0; x < 12; x++) {
+            int c = tile_chars[(int) (*f)[y][x]];
 
-	    if (playing_game && cast_shadow) {
-		PieceData *piece = &piecedata[current_piece][current_rotation];
-		int piece_x = current_x - piece->hot_x;
-
-		if (x >= piece_x && x <= piece_x + 3
-			&& shadow[(x - piece_x)] >= 0
-			&& shadow[(x - piece_x)] < y
-			&& ((c & 0x7f) == ' ')) {
-		    c = (c & (~0x7f)) | '.'
-			| getcolor(COLOR_BLACK, COLOR_BLACK) | A_BOLD;
-		}
-	    }
-
-	    mvaddch(y0+y*2, x0+x*2, c);
-	    addch(c);
-	    mvaddch(y0+y*2+1, x0+x*2, c);
-	    addch(c);
-	}
+            mvaddch((y0+y), x0+x*2, c);
+            addch(c);
+        }
     }
     if (gmsg_inputwin) {
 	delwin(gmsg_inputwin);
