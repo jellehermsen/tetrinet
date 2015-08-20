@@ -1,0 +1,43 @@
+Please see the ChangeLog file for future changes.
+
+Version 0
+---------
+2003/06/24 .10	Unknown commands in partyline mode now cause "unknown command"
+		    errors rather than being sent out as ordinary text.
+2003/06/16 .9	Fixed bug causing players to never get junk lines if not
+		    on a team or the sending player is not on a team.
+		    Patch provided by Petr Baudis <pasky@ucw.cz>
+2003/04/01 .8	Junk lines are no longer added for double/triple/Tetris
+		    clears by team members.  Patch provided by Christoph
+		    Weiss <weissch@informatik.tu-muenchen.de>
+2002/08/13	Added IPv6 support.  Patch for client provided by Cougar
+		    <cougar@random.ee>
+2002/08/10	Added clean and spotless targets to Makefile.
+2002/01/28 .7a	Fixed compilation error on FreeBSD.  Reported by Gadall
+		    <gadall@hotmail.com>
+2000/12/09	Added counter to special window, like Windows version.
+2000/09/15 .7	Added note on distribution/modification to the README.
+2000/09/15	Added counterclockwise rotation.  From Chris Clark
+		    <clach04@yahoo.com>
+2000/08/11	Fixed server bug where game does not end if a player joins
+		    during the game.
+1999/04/13	Various minor fixes.
+1999/01/23	Pause/unpause messages are now printed to the show-fields
+		    and partyline text buffers.
+1999/01/23	Any player is now permitted to pause the game.
+1999/01/23	Lines/Level display now in the right place.
+1998/11/12 .6	Server now ends game if only one player is playing and that
+		    player leaves before losing.
+1998/11/12	Modified display code to use line-drawing characters with
+		    "-fancy" option.
+1998/11/12	Added support for screens larger than 80x50.
+1998/11/12	Added next-piece display in status area.
+1998/11/11	You can no longer use a special on a nonexistent player.
+1998/11/11	"Switch fields" should now work correctly.
+1998/11/03	Added code to send (in "linuxmode") and process game counts
+		    for winlist entries.
+1998/10/31	Fixed server to not send "classic mode" lines to teammates
+		    of a player who clears multiple lines at once.
+1998/10/31	Added delay before first piece in a game.
+1998/10/31	Server now resends winlist upon receiving SIGHUP.
+1998/10/27 .5	Changes file created.

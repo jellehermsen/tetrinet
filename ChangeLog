@@ -1,0 +1,297 @@
+2005-03-02 Wednesday 23:14  Petr Baudis <pasky@ucw.cz>
+
+	* TODO:
+
+	The Blocktrix protocol, X11 and TODO rewrite.
+
+2005-03-02 Wednesday 23:08  Petr Baudis <pasky@ucw.cz>
+
+	* TODO, tetrinet.c:
+
+	Automagically switch from/to the playfield on game end/start.
+
+2005-03-02 Wednesday 22:55  Petr Baudis <pasky@ucw.cz>
+
+	* TODO, io.h, tetrinet.c, tty.c:
+
+	Support for server text attributes in messages. No more ugly control
+	codes. Mixed with a portability fix, use pstring() instead of
+	strstring() - still nothing shiny, but much better than before.
+
+2005-03-02 Wednesday 21:25  Petr Baudis <pasky@ucw.cz>
+
+	* .vimrc:
+
+	A fairie.
+
+2005-03-02 Wednesday 21:25  Petr Baudis <pasky@ucw.cz>
+
+	* AUTHORS:
+
+	Random small changes.
+
+2004-12-23 Thursday 08:02  alfie
+
+	* tetrinet-server.6:
+
+	Small corrections.
+
+2004-12-06 Monday 22:04  Petr Baudis <pasky@ucw.cz>
+
+	* tty.c:
+
+	Tell the world if the signal was SIGINT, too.
+
+2004-12-06 Monday 21:40  alfie
+
+	* TODO, tetris.c:
+
+	Fixed the clean of the talk window on empty input.
+
+2004-12-06 Monday 21:39  alfie
+
+	* tty.c:
+
+	Added some more curs_set
+
+2004-12-06 Monday 19:48  alfie
+
+	* tetrinet-server.6:
+
+	added manpage for tetrinet-server
+
+2004-11-23 Tuesday 12:41  alfie
+
+	* TODO:
+
+	Filled the TODO list a little more.
+
+2004-11-23 Tuesday 09:00  alfie
+
+	* tetrinet.6:
+
+	Finally, the manpage for the client.
+
+2003-12-24 Wednesday 08:28  alfie
+
+	* tty.c:
+
+	Add some curs_set calls to show/hide the cursor where appropriate.
+
+2003-11-24 Monday 16:28  Petr Baudis <pasky@ucw.cz>
+
+	* Makefile:
+
+	Added -fno-builtin-log to the default CFLAGS.
+
+2003-11-24 Monday 16:26  Petr Baudis <pasky@ucw.cz>
+
+	* Makefile:
+
+	Reworked Makefile to contain configuration area.
+
+2003-11-24 Monday 16:16  Petr Baudis <pasky@ucw.cz>
+
+	* README:
+
+	Removed notice about xwin. There's no xwin.c ;-).
+
+2003-11-24 Monday 16:16  Petr Baudis <pasky@ucw.cz>
+
+	* Makefile:
+
+	Removed legacy xwin.o stuff.
+
+2003-11-24 Monday 16:14  Petr Baudis <pasky@ucw.cz>
+
+	* server.c:
+
+	Tiny compilation fix.
+
+2003-11-24 Monday 16:12  Petr Baudis <pasky@ucw.cz>
+
+	* server.c:
+
+	Optimized the brute-force decryption. Now it still first tries the
+	correct hash and if doesn't succed it goes for bruteforce.
+
+2003-11-24 Monday 16:08  Petr Baudis <pasky@ucw.cz>
+
+	* server.c:
+
+	The decrypting of messages based on IP moved to decrypt_message().
+
+2003-11-24 Monday 16:04  Petr Baudis <pasky@ucw.cz>
+
+	* Makefile, server.c:
+
+	Brute-force decryption of the tetrisstart message, now it works even
+	for clients behind NATs.
+
+2003-11-24 Monday 16:03  Petr Baudis <pasky@ucw.cz>
+
+	* README:
+
+	See Makefile for various obscure compile-time switches.
+
+2003-10-24 Friday 10:48  Petr Baudis <pasky@ucw.cz>
+
+	* tty.c:
+
+	Removed plenty of useless (and possible confusing and dangerous)
+	signal handlers.
+
+2003-10-05 Sunday 18:39  alfie
+
+	* Makefile, tetrinet.c, xwin.c:
+
+	Removed xwin.c for now because it doesn't include anything useful
+	currently.
+
+2003-10-02 Thursday 16:59  Petr Baudis <pasky@ucw.cz>
+
+	* Makefile:
+
+	Remove *.o in binonly as well.
+
+2003-10-02 Thursday 16:58  Petr Baudis <pasky@ucw.cz>
+
+	* Makefile:
+
+	Introduced maintainer target binonly.
+
+2003-10-02 Thursday 16:35  Petr Baudis <pasky@ucw.cz>
+
+	* Changes, README, version.h:
+
+	tetrinet-0.11
+
+2003-09-11 Thursday 20:26  alfie
+
+	* tty.c:
+
+	Add support to display team name in playfield. Required to move
+	player name to the left.
+
+2003-09-09 Tuesday 19:15  alfie
+
+	* sockets.c:
+
+	#include <string.c> to silence memcpy and memset warning.
+
+2003-09-07 Sunday 16:30  Petr Baudis <pasky@ucw.cz>
+
+	* README, version.h:
+
+	0.10-pb4
+
+2003-09-07 Sunday 16:29  Petr Baudis <pasky@ucw.cz>
+
+	* Makefile, server.c, sockets.c, tetrinet.c, tetris.c, tetris.h,
+	tty.c, xwin.c:
+
+	Added -Wall parameter to the compilation and fixed the tons of
+	warnings. The result is a rather massive cleanup.
+
+2003-09-07 Sunday 16:12  Petr Baudis <pasky@ucw.cz>
+
+	* README, tetrinet.c, tetrinet.h, tetris.c, tetris.h, tty.c:
+
+	Added support for pieces casting 'shadow'. This feature is
+	controlled by -shadow/-noshadow options and it is on by default. A
+	little bit more messy than I originally wanted it to :-(.
+
+2003-09-05 Friday 14:32  Petr Baudis <pasky@ucw.cz>
+
+	* Makefile, README, tetrinet.c:
+
+	By default the client does not contain the server code anymore. It
+	can still be enabled manually at the compile time. Idea by alfie.
+
+2003-09-05 Friday 11:39  Petr Baudis <pasky@ucw.cz>
+
+	* README, version.h:
+
+	0.10-pb3
+
+2003-09-05 Friday 11:37  Petr Baudis <pasky@ucw.cz>
+
+	* tetrinet.c, version.h:
+
+	Include the version information in the usage output.
+
+2003-09-05 Friday 11:33  Petr Baudis <pasky@ucw.cz>
+
+	* .cvsignore:
+
+	Ignore compiled binaries.
+
+2003-09-05 Friday 11:25  Petr Baudis <pasky@ucw.cz>
+
+	* server.c:
+
+	_Untested_ server-side tetrifast support.
+
+2003-09-05 Friday 11:15  Petr Baudis <pasky@ucw.cz>
+
+	* README, tetrinet.c:
+
+	Documented the -fast option.
+
+2003-09-05 Friday 11:09  Petr Baudis <pasky@ucw.cz>
+
+	* tetrinet.c:
+
+	Print verbose usage help, also when an unknown option is passed.
+
+2003-09-05 Friday 10:56  Petr Baudis <pasky@ucw.cz>
+
+	* Changes:
+
+	-pb branch changes are in ChangeLog.
+
+2003-09-05 Friday 10:54  Petr Baudis <pasky@ucw.cz>
+
+	* AUTHORS:
+
+	Put together some AUTHORS file.
+
+2003-09-05 Friday 10:46  Petr Baudis <pasky@ucw.cz>
+
+	* README:
+
+	0.10-pb2 (pb1 was done outside of CVS yet)
+
+2003-09-05 Friday 10:39  Petr Baudis <pasky@ucw.cz>
+
+	* tetrinet.c, tetrinet.h, tetris.c:
+
+	Tetrifast support.
+
+2003-09-05 Friday 10:38  Petr Baudis <pasky@ucw.cz>
+
+	* README, tetrinet.c:
+
+	Introduced multichannel support (it was rather just a trivial fix).
+
+2003-09-05 Friday 10:37  Petr Baudis <pasky@ucw.cz>
+
+	* tetrinet.c:
+
+	Still send unknown commands to the server, patch by Gerfried Fuchs
+	<alfie@ist.org> and me.
+
+2003-09-05 Friday 10:30  Petr Baudis <pasky@ucw.cz>
+
+	* README:
+
+	Administrative commit - 0.10-pb0.
+
+2003-09-05 Friday 10:28  Petr Baudis <pasky@ucw.cz>
+
+	* Changes, Makefile, README, TODO, io.h, server.c, server.h,
+	sockets.c, sockets.h, tetrinet.c, tetrinet.h, tetrinet.txt,
+	tetris.c, tetris.h, tty.c, xwin.c:
+
+	Initial revision
+

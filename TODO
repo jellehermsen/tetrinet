@@ -1,0 +1,17 @@
+Teams broken: (usually) doesn't stop when only 1 team is left; team joins
+	not always propogated, teams case-sensitive
+If in game, server should send current fields to new-connecting players
+"Stack Height at Start" not implemented
+"Server lines" not implemented
+If gmsg input window is open and we switch to Partyline mode, things get
+	confused
+
+-) Next block and stats are displayed during a game even in Partyline mode
+
+-) really hide the cursor on the playfield completely
+-) pause / unpause key in playfield
+
+-) the Blocktrix protocol
+-) X11 frontend (might not be as difficult as it seems)
+
+-) rewrite and reorder this file :-)

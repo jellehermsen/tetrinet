@@ -1,11 +1,3 @@
-# tetrinet
-A Linux terminal Tetrinet fork that changes the client so it looks more like tetris-bsd
-
-You will need ncurses-dev to build this. Build it with 'make'.
-
-
-## The original README
-```txt
                             Tetrinet for Linux
                             ------------------
                   by Andrew Church <achurch@achurch.org>
@@ -299,4 +291,3 @@ Acknowledgements
 ----------------
 Tetrinet was originally written by St0rmCat, who has asked not to be
 contacted with respect to Tetrinet.
-```

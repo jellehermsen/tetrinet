@@ -1,0 +1,28 @@
+People who contributed to this tetrinet package, in alphabetical order (if you
+are missing here or some of your contributions is, tell us):
+
+
+Andrew Church <achurch@achurch.org>
+	The original implementation
+	The original package maintainer
+
+Chris Clark <clach04@yahoo.com>
+	Counterclockwise rotation
+
+Christoph Weiss <weissch@informatik.tu-muenchen.de>
+	Teamplay fix
+
+Cougar <cougar@random.ee>
+	IPv6 support
+
+Gadall <gadall@hotmail.com>
+	FreeBSD compilation fixes
+
+Gerfried Fuchs <alfie@ist.org>
+	Extensive random hacking
+
+Petr Baudis <pasky@ucw.cz>
+	The current maintainer
+	Multichannel support
+	Tetrifast support
+	Random hacking
