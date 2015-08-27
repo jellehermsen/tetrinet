@@ -900,7 +900,6 @@ void tetris_input(int c)
 	return;
 
     switch (c) {
-      case K_UP:	/* Rotate clockwise */
       case 'x':
 	if (piece_waiting)
 	    break;
@@ -921,6 +920,7 @@ void tetris_input(int c)
 	}
 	break;
 
+      case K_UP:	/* Rotate clockwise */
       case 'z':		/* Rotate counterclockwise */
 	if (piece_waiting)
 	    break;
